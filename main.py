@@ -4,15 +4,19 @@ from map import *
 from camera import *
 from raycasting import *
 
-
 class Game:
+
+    WIDTH, HEIGHT = 1600, 800
 
     def __init__(self, res, FPS):
         pg.init()
+
+        self.WIDTH = res * 40
+        self.HEIGHT = res * 20
         self.running = True
         self.res = res
         self.FPS = FPS
-        self.screen = pg.display.set_mode((res * 20, res * 20))
+        self.screen = pg.display.set_mode((self.WIDTH, self.HEIGHT))
         self.clock = pg.time.Clock()
         self.delta_time = 1
         self.newGame()
@@ -35,15 +39,15 @@ class Game:
                 pg.quit()
                 sys.exit()
 
-    def showGrid(self):
-        for i in range(20):
-            pg.draw.line(self.screen, "white", (i * self.res, 0), (i * self.res, i * self.res * 20))
-        for i in range(20):
-            pg.draw.line(self.screen, "white", (0, i * self.res), (i * self.res, i * self.res * 20))
+    def show2DGrid(self):
+        for i in range(self.res):
+            pg.draw.aaline(self.screen, "white", (i * self.res, 0), (i * self.res, self.HEIGHT), )
+        for j in range(self.res):
+            pg.draw.aaline(self.screen, "white", (0, j * self.res), (self.WIDTH//2, j * self.res), )
 
     def draw(self):
         self.screen.fill("black")
-        self.showGrid()
+        #self.show2DGrid()
         self.map.draw()
         self.camera.draw()
 

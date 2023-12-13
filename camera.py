@@ -31,11 +31,9 @@ class Camera:
             dx -= speed_x
             dy -= speed_y
 
-
         if keys[pg.K_d]:
             dx -= speed_y
             dy += speed_x
-
 
         if keys[pg.K_a]:
             dx += speed_y
@@ -61,9 +59,9 @@ class Camera:
             self.x += dx
 
     def draw(self):
-        # pg.draw.line(self.game.screen, (255,255,255), (self.x, self.y),
-        #              (self.x + (self.game.res * 20) * math.sin(self.angle),
-        #               self.y + (self.game.res * 20) * math.cos(self.angle)), 2)
+        pg.draw.line(self.game.screen, (255,255,255), (self.x, self.y),
+                     (self.x + (self.game.res * 20) * math.sin(self.angle),
+                      self.y + (self.game.res * 20) * math.cos(self.angle)), 2)
         pg.draw.circle(self.game.screen, (255, 0, 0), (self.x, self.y), self.game.res//2)
 
 
