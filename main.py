@@ -23,7 +23,7 @@ class Game:
 
     def newGame(self):
         self.map = Map(self)
-        self.camera = Camera(self, 300, 300)
+        self.camera = Camera(self, self.WIDTH//4, self.HEIGHT//2)
         self.ray = Raycast(self)
 
     def update(self):
@@ -54,10 +54,10 @@ class Game:
     def run(self):
         while self.running:
             self.draw()
-            self.checkEvents()
             self.update()
+            self.checkEvents()
         pg.quit()
 
 
-game = Game(40, 60)
+game = Game(30, 60)
 game.run()
