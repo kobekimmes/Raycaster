@@ -65,7 +65,7 @@ class Raycast:
 
             pg.draw.line(self.game.screen, (255, 255, 0), (self.game.camera.get_real_pos),
                          ((((self.game.camera.x) + (cos_a * depth * res))*res)//res,
-                          (((self.game.camera.y) + (sin_a * depth *res))*res)//res), 2)
+                          (((self.game.camera.y) + (sin_a * depth *res))*res)//res), 5)
 
             depth *= math.cos(self.game.camera.angle - ray_angle)
 

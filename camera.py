@@ -10,7 +10,7 @@ class Camera:
         self.rot_speed = 0.001
         self.x = x
         self.y = y
-        self.angle = 90
+        self.angle = 0
 
     def move(self):
 
@@ -60,8 +60,8 @@ class Camera:
 
     def draw(self):
         pg.draw.line(self.game.screen, (255,255,255), (self.x, self.y),
-                     (self.x + (self.game.res * 20) * math.sin(self.angle),
-                      self.y + (self.game.res * 20) * math.cos(self.angle)), 2)
+                     (self.x + (self.game.res) * math.sin(self.angle),
+                      self.y + (self.game.res) * math.cos(self.angle)), 2)
         pg.draw.circle(self.game.screen, (255, 0, 0), (self.x, self.y), self.game.res//4)
 
 
