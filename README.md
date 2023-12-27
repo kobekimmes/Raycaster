@@ -4,4 +4,4 @@
 
 Developed in Python with the Pygame graphics library. 
 
-Started Dec. 6th, 2023 -- Finished Dec. 13th, 2023
+Dec. 12th 2023
