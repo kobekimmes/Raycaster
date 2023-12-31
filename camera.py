@@ -10,7 +10,7 @@ class Camera:
         self.rot_speed = 0.001
         self.x = x
         self.y = y
-        self.angle = 0
+        self.angle = 360
 
     def move(self):
 

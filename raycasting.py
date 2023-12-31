@@ -15,13 +15,13 @@ class Raycast:
         res = self.game.res
         cam_x, cam_y = self.game.camera.get_pos
         map_x, map_y = self.game.camera.get_map_pos
-        # print(self.FOV, self.delta_angle)
+
         print(cam_x, cam_y)
         print(map_x,map_y)
 
         self.ray_distances = []
 
-        ray_angle = self.game.camera.angle - (self.FOV / 2) + 0.00001
+        ray_angle = (self.game.camera.angle - (self.FOV / 2)) + 0.00001
         for ray in range(self.num_rays):
             sin_a = math.sin(ray_angle)
             cos_a = math.cos(ray_angle)
@@ -64,8 +64,8 @@ class Raycast:
             depth = depth_vert if depth_vert < depth_hor else depth_hor
 
             pg.draw.line(self.game.screen, (255, 255, 0), (self.game.camera.get_real_pos),
-                         ((((self.game.camera.x) + (cos_a * depth * res))*res)//res,
-                          (((self.game.camera.y) + (sin_a * depth *res))*res)//res), 5)
+                         (((self.game.camera.x) + depth * cos_a * res),
+                          ((self.game.camera.y) + depth * sin_a * res)), 5)
 
             depth *= math.cos(self.game.camera.angle - ray_angle)
 
@@ -85,7 +85,7 @@ class Raycast:
 
             projected_height = screen_distance / (ray_length + 0.0001)
 
-            brightness = [(255 / (ray_length + 0.001))] * 3
+            #brightness = [(255 / (ray_length + 0.001))] * 3
 
             pg.draw.rect(self.game.screen, "white", ((i * scale) + self.game.WIDTH//2, (self.game.HEIGHT - projected_height)// 2, scale, projected_height))
 

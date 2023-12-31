@@ -59,5 +59,6 @@ class Game:
         pg.quit()
 
 
-game = Game(30, 60)
-game.run()
+if __name__ == "__main__":
+    game = Game(30, 60)
+    game.run()
